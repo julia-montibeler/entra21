@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Exercicios {
 
     public static void main(String[] args) {
-        exe18();
+        exe22();
     }
 
     public static void exe01() {
@@ -57,9 +57,9 @@ public class Exercicios {
         System.out.print("Votos brancos: ");
         int vbranco = sc.nextInt();
         int vvalido = eleitores - (vnulo + vbranco);
-        double pvnulo = (vnulo * 100) / eleitores;
-        double pvbranco = (vbranco * 100) / eleitores;
-        double pvvalido = (vvalido * 100) / eleitores;
+        double pvnulo = (vnulo * 100.0) / eleitores;
+        double pvbranco = (vbranco * 100.0) / eleitores;
+        double pvvalido = (vvalido * 100.0) / eleitores;
         System.out.printf("Votos válidos: %.1f%%",(pvvalido));
         System.out.printf("Votos nulos: %.1f%%",(pvnulo));
         System.out.printf("Votos branco: %.1f%%",(pvbranco));
@@ -234,5 +234,76 @@ public class Exercicios {
             System.out.printf("Salário total: R$%.2f", salarioF);
         }
     }
+
+    public static void exe19() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nome: ");
+        String nome = sc.next();
+        System.out.print("Altura (em metros): ");
+        double altura = sc.nextDouble();
+        System.out.print("Sexo (M ou F): ");
+        String sexo = sc.next();
+        double peso = 0;
+        if (sexo.equals("M")) {
+            peso = (72.7 * altura) - 58;
+        } else if (sexo.equals("F")) {
+            peso = (62.1 * altura) - 44.7;
+        }
+        System.out.printf("Seu peso ideal é: %.2f", peso);
+    }
+
+    public static void exe20() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Salário fixo: ");
+        double salarioFixo = sc.nextDouble();
+        System.out.print("Vendas efetuadas: ");
+        double vendas = sc.nextDouble();
+        double comissao = 0;
+        if (vendas <= 1500) {
+            comissao = vendas * 0.03;
+        } else {
+            comissao = (vendas - 1500) * 0.05 + 1500 * 0.03;
+        }
+        double salarioTotal = salarioFixo + comissao;
+        System.out.printf("Salário total: "+ salarioTotal);
+    }
+
+    public static void exe21() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Número da conta: ");
+        int conta = sc.nextInt();
+        System.out.print("Saldo: ");
+        double saldo = sc.nextDouble();
+        System.out.print("Débito: ");
+        double debito = sc.nextDouble();
+        System.out.print("Crédito: ");
+        double credito = sc.nextDouble();
+        double saldoAtual = saldo - debito + credito;
+        System.out.println("Saldo atual: "+ saldoAtual);
+
+        if (saldoAtual < 0) {
+            System.out.println("Saldo Negativo");
+        } else {
+            System.out.println("Saldo Positivo");
+        }
+    }
+
+    public static void exe22() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Quantidade em estoque: ");
+        int estoqueAtual = sc.nextInt();
+        System.out.print("Quantidade máxima do estoque: ");
+        int estoqueMax = sc.nextInt();
+        System.out.print("Quantidade mínima do estoque: ");
+        int estoqueMin = sc.nextInt();
+        int media = (estoqueMin + estoqueMax) / 2;
+        System.out.println("Quantidade média: "+media);
+        if (estoqueAtual >= media) {
+            System.out.println("Não efetuar compra");
+        } else {
+            System.out.println("Efetuar compra");
+        }
+    }
 }
+
 
