@@ -3,14 +3,15 @@ import java.util.Scanner;
 public class batalha_naval_2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int ponto = 0;
         int[][] mapa = {
-                {0, 0, 0, 0, 1, 0, 0, 0},
-                {0, 1, 0, 0, 0, 0, 1, 0},
+                {0, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 1, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 1, 0, 0, 0, 0, 1, 0},
+                {0, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 1, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 1, 0, 1, 0, 1, 0},
+                {0, 0, 0, 0, 0, 0, 1, 0},
                 {1, 0, 0, 0, 0, 0, 0, 0},
         };
         String[][] mapaIm = {
@@ -39,6 +40,7 @@ public class batalha_naval_2 {
             if (mapa[linha][coluna] == 1) {
                 System.out.println("Você atingiu uma embarcação");
                 mapaIm[linha][coluna] = "+";
+                ponto += 1;
 
 
                 //transformar coordenadas ao redor
@@ -92,8 +94,41 @@ public class batalha_naval_2 {
                     }
                 }
 
+                if (linha == 0) {
+                    if (mapa[linha + 1][coluna] == 0) {
+                        mapaIm[linha + 1][coluna] = "/";
+                    } else {
+                        mapaIm[linha + 1][coluna] = "+";
+                    }
+
+                    if (mapa[linha + 1][coluna + 1] == 0) {
+                        mapaIm[linha + 1][coluna + 1] = "/";
+                    } else {
+                        mapaIm[linha + 1][coluna + 1] = "+";
+                    }
+
+                    if (mapa[linha][coluna + 1] == 0) {
+                        mapaIm[linha][coluna + 1] = "/";
+                    } else {
+                        mapaIm[linha][coluna + 1] = "+";
+                    }
+
+                    if (mapa[linha][coluna - 1] == 0) {
+                        mapaIm[linha][coluna - 1] = "/";
+                    } else {
+                        mapaIm[linha][coluna - 1] = "+";
+                    }
+
+                    if (mapa[linha + 1][coluna - 1] == 0) {
+                        mapaIm[linha + 1][coluna - 1] = "/";
+                    } else {
+                        mapaIm[linha + 1][coluna - 1] = "+";
+                    }
+
+                } else {
+
                 System.out.println("Você não atingiu uma embarcação");
-                mapaIm[linha][coluna] = "/";
+                mapaIm[linha][coluna] = "/";}
             }
             for (int i = 0; i < mapaIm.length; i++) {
                 for (int j = 0; j < mapaIm[i].length; j++) {
@@ -105,6 +140,10 @@ public class batalha_naval_2 {
 
 
                 }
+            }
+            if (ponto == 5) {
+                System.out.println("Você encontrou todas as embarcações!");
+                break;
             }
         }
 
