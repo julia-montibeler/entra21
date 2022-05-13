@@ -17,6 +17,8 @@ public class forca {
 
         System.out.print("Palavra secreta: ");
         String palavra = sc.nextLine().toLowerCase();
+
+        //verificando se é frase e pedindo uma palavra caso for
         while (true) {
             if(palavra.contains(" ")) {
                 System.out.println("Você digitou uma frase");
@@ -33,15 +35,15 @@ public class forca {
         }
 
         int cont = 0; //contador de quantas vezes repetiu o código
-        char [] letras = new char[palavra.length()]; //array com a cada letra da palavra, para comparação
-        String[] espacos = new String[palavra.length()]; //array com as letras corretas, é exibida para o usuário
+        char [] letras = new char[palavra.length()]; //vetor com a cada letra da palavra, para comparação
+        char[] espacos = new char[palavra.length()]; //vetor com as letras corretas, é exibida para o usuário
         String letraString = ""; // letra digitada pelo usuário
-        char letra = ' '; // conversão das posições do array em Strings, para comparação
+        char letra = ' '; // letra convertida para char
         int contRepetidas = 0; //Contador para verificar se a letra já foi digitada
         int errosLetras = 0;
         int erros = 0;
-        String palavraFinal = "";
-        String[] letraDigitadas = {"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
+        String palavraFinal = ""; //vetor espacos transformado em String para comparar com a palavra inicial
+        char[] letraDigitadas = {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 
         String[][] forca = {
                 {"|","_","_","_","_","_"},
@@ -52,7 +54,7 @@ public class forca {
 
         //adicionar _ a todas as posições do array espaços, para ela ter o mesmo tamanho da palavra
         for (int i = 0; i < palavra.length(); i++) {
-            espacos[i] = "_";
+            espacos[i] = '_';
         }
 
         //adicionar as letras de palavra para o array letra
@@ -96,7 +98,7 @@ public class forca {
             //verificar se é uma letra e se já foi digitada
             while (true) {
                 for (int m = 0; m < letraDigitadas.length; m++) {
-                    if (letraString.equals(letraDigitadas[m])) {
+                    if (letra == letraDigitadas[m]) {
                         contRepetidas += 1;
                     }
                 }
@@ -110,12 +112,12 @@ public class forca {
                     break;
                 }
             }
-            letraDigitadas[cont] = letraString;
+            letraDigitadas[cont] = letra;
 
             //verificando se a letra está na palavra
             for (int k = 0; k < palavra.length(); k++) {
                 if (letra == letras[k]) {
-                    espacos[k] = letraString;
+                    espacos[k] = letra;
                 } else {
                     errosLetras += 1; //contando quantas letras são diferentes da letra digitada
                 }
@@ -174,7 +176,7 @@ public class forca {
                         System.out.print(espacos[l]);
                     }
                 }
-                System.out.println("Você ganhou!");
+                System.out.println("Você ganhou! :)");
                 break;
             } else if (erros == 6) {
                 //print da forca
@@ -196,6 +198,7 @@ public class forca {
                         System.out.print(espacos[l]);
                     }
                 }
+                System.out.println("A palavra era "+palavra);
                 System.out.println("Você perdeu :(");
                 break;
             }
