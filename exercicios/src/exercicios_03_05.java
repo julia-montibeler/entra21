@@ -1,4 +1,4 @@
-public class exercicios_aula_03_05 {
+public class exercicios_03_05 {
     public static void main(String[] args) {
         if(forbiddenLetter(new String[]{"abc","def","ghi"}, 'a')) {
             System.out.println("Encontrou letra proibida");
