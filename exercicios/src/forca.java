@@ -36,7 +36,7 @@ public class forca {
         char [] letras = new char[palavra.length()]; //array com a cada letra da palavra, para comparação
         String[] espacos = new String[palavra.length()]; //array com as letras corretas, é exibida para o usuário
         String letraString = ""; // letra digitada pelo usuário
-        char letra = ' '; // conversão das posições do array em Strings, para comparação
+        char letra = ' '; // letra convertida para char
         int contRepetidas = 0; //Contador para verificar se a letra já foi digitada
         int errosLetras = 0;
         int erros = 0;
