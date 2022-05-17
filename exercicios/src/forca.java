@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static java.lang.Character.isLetter;
+
 public class forca {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -29,7 +31,7 @@ public class forca {
         }
 
         //limpar o console
-        for (int t = 0; t < 50; t++) {
+        for (int i = 0; i < 50; i++) {
             System.out.println(" ");
         }
 
@@ -57,36 +59,36 @@ public class forca {
         }
 
         //adicionar as letras de palavra para o array letra
-        for (int j = 0; j < palavra.length(); j++) {
-            letras[j] = palavra.charAt(j);
+        for (int i = 0; i < palavra.length(); i++) {
+            letras[i] = palavra.charAt(i);
         }
 
 
         while (true) {
             cont += 1;
             //print da forca
-            for (int n = 0; n < forca.length;n++) {
-                for (int o = 0; o < forca[n].length;o++) {
-                    if (o == 5) {
-                        System.out.println(forca[n][o]);
+            for (int i = 0; i < forca.length;i++) {
+                for (int j = 0; j < forca[i].length; j++) {
+                    if (j == 5) {
+                        System.out.println(forca[i][j]);
                     } else {
-                        System.out.print(forca[n][o]);
+                        System.out.print(forca[i][j]);
                     }
                 }
             }
 
             //print das letras já descobertas
-            for (int l = 0; l < espacos.length;l++) {
-                if (l == (espacos.length - 1)) {
-                    System.out.print(espacos[l] + "\n");
+            for (int i = 0; i < espacos.length; i++) {
+                if (i == (espacos.length - 1)) {
+                    System.out.print(espacos[i] + "\n");
                 } else {
-                    System.out.print(espacos[l]);
+                    System.out.print(espacos[i]);
                 }
             }
 
             //print das letras digitadas
-            for (int u = 0; u < letraDigitadas.length; u++) {
-                System.out.print(letraDigitadas[u]+" ");
+            for (int i = 0; i < letraDigitadas.length; i++) {
+                System.out.print(letraDigitadas[i]+" ");
             }
             System.out.println(" ");
             System.out.println("Digite uma letra: ");
@@ -96,13 +98,13 @@ public class forca {
 
             //verificar se é uma letra e se já foi digitada
             while (true) {
-                for (int m = 0; m < letraDigitadas.length; m++) {
-                    if (letra == letraDigitadas[m]) {
+                for (int i = 0; i < letraDigitadas.length; i++) {
+                    if (letra == letraDigitadas[i]) {
                         contRepetidas += 1;
                     }
                 }
 
-                if (contRepetidas >= 1 || letraString.length() > 1) {
+                if (contRepetidas >= 1 || letraString.length() > 1 || !Character.isLetter(letra)) {
                     System.out.print("Digite uma letra válida: ");
                     letraString = sc.next().toLowerCase();
                     letra = letraString.charAt(0);
@@ -114,9 +116,9 @@ public class forca {
             letraDigitadas[cont] = letra;
 
             //verificando se a letra está na palavra
-            for (int k = 0; k < palavra.length(); k++) {
-                if (letra == letras[k]) {
-                    espacos[k] = letra;
+            for (int i = 0; i < palavra.length(); i++) {
+                if (letra == letras[i]) {
+                    espacos[i] = letra;
                 } else {
                     errosLetras += 1; //contando quantas letras são diferentes da letra digitada
                 }
@@ -146,55 +148,55 @@ public class forca {
             }
 
             //tranformando o array espacos em uma String, para comparar com a palavra inicial
-            for (int s = 0; s < palavra.length(); s++) {
-                palavraFinal += espacos[s];
+            for (int i = 0; i < palavra.length(); i++) {
+                palavraFinal += espacos[i];
             }
 
-            for (int t = 0; t < 50; t++) {
+            for (int i = 0; i < 50; i++) {
                 System.out.println(" ");
             }
 
             //Verificar se ganhou ou perdeu
             if (palavra.equals(palavraFinal)) {
                 //print da forca
-                for (int n = 0; n < forca.length;n++) {
-                    for (int o = 0; o < forca[n].length;o++) {
-                        if (o == 5) {
-                            System.out.println(forca[n][o]);
+                for (int i = 0; i < forca.length; i++) {
+                    for (int j = 0; j < forca[i].length; j++) {
+                        if (j == 5) {
+                            System.out.println(forca[i][j]);
                         } else {
-                            System.out.print(forca[n][o]);
+                            System.out.print(forca[i][j]);
                         }
                     }
                 }
 
                 //print das letras já descobertas
-                for (int l = 0; l < espacos.length;l++) {
-                    if (l == (espacos.length - 1)) {
-                        System.out.print(espacos[l] + "\n");
+                for (int i = 0; i < espacos.length; i++) {
+                    if (i == (espacos.length - 1)) {
+                        System.out.print(espacos[i] + "\n");
                     } else {
-                        System.out.print(espacos[l]);
+                        System.out.print(espacos[i]);
                     }
                 }
                 System.out.println("Você ganhou! :)");
                 break;
             } else if (erros == 6) {
                 //print da forca
-                for (int n = 0; n < forca.length;n++) {
-                    for (int o = 0; o < forca[n].length;o++) {
-                        if (o == 5) {
-                            System.out.println(forca[n][o]);
+                for (int i = 0; i < forca.length; i++) {
+                    for (int j = 0; j < forca[i].length; j++) {
+                        if (j == 5) {
+                            System.out.println(forca[i][j]);
                         } else {
-                            System.out.print(forca[n][o]);
+                            System.out.print(forca[i][j]);
                         }
                     }
                 }
 
                 //print das letras já descobertas
-                for (int l = 0; l < espacos.length;l++) {
-                    if (l == (espacos.length - 1)) {
-                        System.out.print(espacos[l] + "\n");
+                for (int i = 0; i < espacos.length; i++) {
+                    if (i == (espacos.length - 1)) {
+                        System.out.print(espacos[i] + "\n");
                     } else {
-                        System.out.print(espacos[l]);
+                        System.out.print(espacos[i]);
                     }
                 }
                 System.out.println("A palavra era "+palavra);
