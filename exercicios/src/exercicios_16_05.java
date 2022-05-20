@@ -114,8 +114,5 @@ public class exercicios_16_05 {
                 }
             }
         }
-
-
-
     }
 }
