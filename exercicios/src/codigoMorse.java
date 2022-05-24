@@ -1,7 +1,12 @@
 import java.util.Scanner;
 
 public class codigoMorse {
-    public static void main(String[] args) {
+    public static void m
+
+
+
+
+    ain(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("1-Traduzir de Português para Morse");
         System.out.println("2-Traduzir de Morse para Português");
