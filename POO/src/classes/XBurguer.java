@@ -1,13 +1,13 @@
 package classes;
 
-public class XBurguer extends Lanche{
+public class XBurguer extends Sanduiche{
     public boolean aberto;
 
     @Override // sobre escrevendo o método para criar um comportamento reservado
     public void montarComanda() {
         super.montarComanda(); //chamar o comportamento genérico
         if (this.aberto) {
-            System.out.println("Lanche Aberto");
+            System.out.println("    Lanche Aberto");
         }
     }
     public XBurguer() {

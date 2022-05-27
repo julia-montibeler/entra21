@@ -1,18 +1,12 @@
 import classes.*;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Escolha uma opção: ");
-        System.out.println("1 - X-Salada");
-        System.out.println("2 - X-Burger");
-        System.out.println("3 - Hot Dog");
-        System.out.println("4 - Misto Quente");
-        System.out.println("5 - Mini Pizza (calabresa)");
-        int escolha = sc.nextInt();
-
+        int escolha = 0;
         while (!(escolha <= 5 && escolha >= 1)) {
             System.err.println("Escolha um valor válido!");
             System.out.println("1 - X-Salada");
@@ -21,6 +15,7 @@ public class Main {
             System.out.println("4 - Misto Quente");
             System.out.println("5 - Mini Pizza (calabresa)");
             escolha = sc.nextInt();
+            sc.nextLine();
         }
 
         Lanche lanche = null;
@@ -45,22 +40,41 @@ public class Main {
                 lanche = new MiniPizza();
                 break;
         }
-        if(escolha == 1 || escolha == 2) {
-            System.out.print("Lanche aberto? (S/N) ");
-            String aberto = sc.next();
-            ((XBurguer) lanche).aberto = aberto.equalsIgnoreCase("S"); // if ternário: se a condição for T a variável recebe T
-            if (((XBurguer) lanche).aberto) { //((XBurguer) lanche) serve para dizer a classe do objeto
-                lanche.adicionarIngrediente("Batata Frita");
+
+        //se for um instância de Sanduiche verifica se é uma instância de XBurguer, caso for, pergunta se é aberto, caso não, pede pelos adicionais
+        if(lanche instanceof Sanduiche) {
+            if(lanche instanceof XBurguer) {
+                System.out.print("Lanche aberto? (S/N) ");
+                String aberto = sc.nextLine();
+                ((XBurguer) lanche).aberto = aberto.equalsIgnoreCase("S"); // if ternário: se a condição for T a variável recebe T
+                if (((XBurguer) lanche).aberto) { //((XBurguer) lanche) serve para dizer a classe do objeto
+                    lanche.adicionarIngrediente("Batata Frita");
+                }
+            }
+            System.out.print("Deseja colocar adicionais? (S/N)");
+            String temAdicional = sc.nextLine();
+            if (temAdicional.equalsIgnoreCase("S")){
+                for (int i = 0; i < 10; i++) {
+                    System.out.print("Adicional (digite enter para parar): ");
+                    String adicional = sc.next();
+                    if (adicional.equals("")) {
+                        break;
+                    }
+                    ((Sanduiche) lanche).adicionarAdicionais(adicional);
+
+                }
             }
         }
-        if(escolha == 5) {
+
+        //borda recheada somente para a pizza
+        else {
             System.out.print("Borda Recheada? (S/N) ");
             String aberto = sc.next();
             MiniPizza miniPizza = ((MiniPizza) lanche);
-            miniPizza.bordaRecheada = aberto.equalsIgnoreCase("S"); // if ternário: se a condição for T a variável recebe T
+            miniPizza.bordaRecheada = aberto.equalsIgnoreCase("S");
             if(miniPizza.bordaRecheada){
                 System.out.print("Digite o sabor da borda: ");
-                ((MiniPizza) lanche).saborBorda = sc.next();
+                ((MiniPizza) lanche).saborBorda = sc.nextLine();
             }
 
         }
