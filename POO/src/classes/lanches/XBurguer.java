@@ -1,7 +1,7 @@
-package classes;
+package classes.lanches;
 
 public class XBurguer extends Sanduiche{
-    public boolean aberto;
+    private boolean aberto;
 
     @Override // sobre escrevendo o método para criar um comportamento reservado
     public void montarComanda() {
@@ -11,11 +11,20 @@ public class XBurguer extends Sanduiche{
         }
     }
     public XBurguer() {
-        this.tipo = "X-Burguer";
+        this.setTipo("X-Burguer");
         this.adicionarIngrediente("Pão");
         this.adicionarIngrediente("Hambúrguer");
         this.adicionarIngrediente("Presunto");
         this.adicionarIngrediente("Queijo");
         this.adicionarIngrediente("Maionese");
+    }
+
+    //Getters e setters
+
+    public void setAberto(boolean aberto) {
+        this.aberto = aberto;
+    }
+    public boolean isAberto() {
+        return this.aberto;
     }
 }
