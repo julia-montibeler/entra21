@@ -13,22 +13,6 @@ public abstract class Lanche {
             }
         }
     }
-    public void montarComanda() {
-        System.out.println("");
-        if (this instanceof MiniPizza) {
-            System.out.println("==== "+this.tipo+" - "+((MiniPizza)this).getSabor()+" ====");
-        } else {
-            System.out.println("======= " + this.tipo + " =======");
-        }
-        System.out.printf("Valor: R$%.2f\n", this.valor);
-        System.out.println("----- Ingredientes -----");
-        for (String ingrediente: this.ingredientes) {
-            if (ingrediente != null) {
-                System.out.println(ingrediente);
-            }
-        }
-        System.out.println("======================");
-    }
 
     //Getters e setters
 

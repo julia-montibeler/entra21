@@ -12,21 +12,6 @@ public abstract class Sanduiche extends Lanche{
         }
     }
 
-    @Override // sobre escrevendo o método para criar um comportamento reservado
-    public void montarComanda() {
-        super.montarComanda();
-
-        if (this.adicionais[0] != null) {
-            System.out.println("----- Adicionais -----");
-            for (String adicional : this.adicionais) {
-                if (adicional != null) {
-                    System.out.println(adicional);
-                }
-            }
-            System.out.println("======================");
-        }
-    }
-
     //Getters e setters
     public String[] getAdicionais() {
         return this.adicionais;

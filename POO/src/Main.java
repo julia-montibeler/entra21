@@ -1,14 +1,24 @@
 import classes.lanches.*;
+import classes.pedido.Pedido;
 
 import java.util.Scanner;
 
 public class Main {
     public static Scanner sc = new Scanner(System.in);
         public static void main(String[] args) {
-            montarLanche();
+            Pedido pedido = new Pedido();
+            for (int i = 0; i < 9; i++) {
+                pedido.adicionarLanche(montarLanche());
+                System.out.print("Deseja mais alguma coisa? (S/N): ");
+                String escolha = sc.next();
+                if (escolha.equalsIgnoreCase("n")) {
+                    break;
+                }
+            }
+            pedido.imprimirComanda();
         }
 
-    private static void montarLanche() {
+    private static Lanche montarLanche() {
         System.out.println("1 - X-Salada");
         System.out.println("2 - X-Burger");
         System.out.println("3 - Hot Dog");
@@ -64,7 +74,7 @@ public class Main {
             if (temAdicional.equalsIgnoreCase("S")){
                 for (int i = 0; i < 10; i++) {
                     System.out.print("Adicional (digite enter para parar): ");
-                    String adicional = sc.next();
+                    String adicional = sc.nextLine();
                     if (adicional.equals("")) {
                         break;
                     }
@@ -112,17 +122,18 @@ public class Main {
             }
 
             System.out.print("Borda Recheada? (S/N) ");
-            String aberto = sc.next();
+            String aberto = sc.nextLine();
             miniPizza.setBordaRecheada(aberto.equalsIgnoreCase("S"));
             if (miniPizza.isBordaRecheada()){
                 System.out.print("Digite o sabor da borda: ");
-                ((MiniPizza) lanche).setSaborBorda(sc.next());
+                ((MiniPizza) lanche).setSaborBorda(sc.nextLine());
             }
 
         }
 
         System.out.print("Informe o valor de "+lanche.getTipo()+": R$");
         lanche.setValor(sc.nextDouble());
-        lanche.montarComanda();
+        sc.nextLine();
+        return lanche;
     }
 }

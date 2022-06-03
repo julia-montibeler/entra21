@@ -12,13 +12,6 @@ public class MiniPizza extends Lanche {
         this.adicionarIngrediente("Mussarela");
     }
 
-    @Override // sobre escrevendo o método para criar um comportamento reservado
-    public void montarComanda() {
-        super.montarComanda(); //chamar o comportamento genérico
-        if (this.isBordaRecheada()) {
-            System.out.println("Borda Recheada (" + this.getSaborBorda() + ")");
-        }
-    }
 
     public void adicionarSaborEIngredientes(String sabor) {
 
