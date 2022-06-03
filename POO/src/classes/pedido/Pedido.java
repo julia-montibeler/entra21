@@ -15,8 +15,10 @@ public class Pedido {
         }
     }
 
-    public void imprimirComanda(){System.out.println("");
-        System.out.println("========================");
+    public void imprimirComanda(){
+        System.out.println("============" +
+                "" +
+                "============");
         for (Lanche lanche : this.getLanches()) {
             if (lanche != null) {
                 if (lanche instanceof MiniPizza) {

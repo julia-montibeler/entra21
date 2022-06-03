@@ -1,3 +1,4 @@
+import classes.cliente.Cliente;
 import classes.lanches.*;
 import classes.pedido.Pedido;
 
@@ -6,16 +7,21 @@ import java.util.Scanner;
 public class Main {
     public static Scanner sc = new Scanner(System.in);
         public static void main(String[] args) {
-            Pedido pedido = new Pedido();
+            Cliente cliente = new Cliente();
+            System.out.print("Nome do cliente: ");
+            cliente.setNome(sc.nextLine());
+
             for (int i = 0; i < 9; i++) {
-                pedido.adicionarLanche(montarLanche());
+                cliente.getPedido().adicionarLanche(montarLanche());
                 System.out.print("Deseja mais alguma coisa? (S/N): ");
                 String escolha = sc.next();
                 if (escolha.equalsIgnoreCase("n")) {
                     break;
                 }
             }
-            pedido.imprimirComanda();
+
+            System.out.println("\nCliente: "+cliente.getNome());
+            cliente.getPedido().imprimirComanda();
         }
 
     private static Lanche montarLanche() {
