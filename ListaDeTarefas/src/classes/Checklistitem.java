@@ -1,21 +1,15 @@
 package classes;
+
 import static java.util.UUID.randomUUID;
 
-public class Tarefa {
-
-    private Checklistitem checkList[];
+public class Checklistitem {
     private String uuid;
     private String nome;
     private String descricao;
     private boolean completa;
     private int ordem;
 
-    public Tarefa() {
-
-
-
-
-
+    public Checklistitem() {
         this.setUuid(randomUUID().toString());
     }
 
@@ -58,4 +52,5 @@ public class Tarefa {
     public int getOrdem() {
         return this.ordem;
     }
+
 }

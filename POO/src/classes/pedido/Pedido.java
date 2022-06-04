@@ -18,6 +18,7 @@ public class Pedido {
     public void imprimirComanda(){
         System.out.println("============" +
                 "" +
+                "" +
                 "============");
         for (Lanche lanche : this.getLanches()) {
             if (lanche != null) {
