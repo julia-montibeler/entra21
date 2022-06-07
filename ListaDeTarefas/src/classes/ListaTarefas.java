@@ -6,20 +6,46 @@ public class ListaTarefas {
     private String nomeLista;
 
     public ListaTarefas(int tamanhoLista) {
+        this.setTamanhoLista(tamanhoLista);
         this.setTarefas(new Tarefa[tamanhoLista]);
     }
 
     public boolean adicionarTarefa(Tarefa t) {
-        //TODO
+        if (t.getOrdem() < 0 ||
+                t.getOrdem() >= this.getTamanhoLista()) {
+            return false;
+        }
+        for (int i = 0; i < this.getTarefas().length; i++) {
+            if (this.getTarefas()[i] == null) {
+                this.getTarefas()[i] = t;
+                return true;
+            } else if (this.getTarefas()[i].getOrdem() == t.getOrdem()) {
+                break;
+            }
+        }
         return false;
     }
 
-    public Tarefa buscarTarefa(int n) {
-        return this.getTarefas()[n];
+    public Tarefa buscarTarefa(int ordem) {
+        for (Tarefa t : this.getTarefas()) {
+            if (t != null && t.getOrdem() == ordem) {
+                return t;
+            }
+        }
+        return null;
     }
 
-    public boolean alterarOrdemTareda(Tarefa t, int novaPosicao) {
-        //TODO
+    public boolean alterarOrdemTareda(int antigaOrdem, int novaOrdem) {
+        Tarefa tarefaAntiga = buscarTarefa(antigaOrdem);
+        Tarefa novaTarefa = buscarTarefa(novaOrdem);
+        if (tarefaAntiga == null || novaTarefa == null) {
+            return false;
+        }
+
+
+        tarefaAntiga.setOrdem(novaOrdem);
+        novaTarefa.setOrdem(antigaOrdem);
+
         return true;
     }
 

@@ -3,11 +3,11 @@ package classes;
 import static java.util.UUID.randomUUID;
 
 public class Checklistitem {
+
     private String uuid;
     private String nome;
     private String descricao;
     private boolean completa;
-    private int ordem;
 
     public Checklistitem() {
         this.setUuid(randomUUID().toString());
@@ -46,11 +46,5 @@ public class Checklistitem {
         return this.completa;
     }
 
-    public void setOrdem(int ordem) {
-        this.ordem = ordem;
-    }
-    public int getOrdem() {
-        return this.ordem;
-    }
 
 }
