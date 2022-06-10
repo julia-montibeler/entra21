@@ -49,9 +49,7 @@ public class Estante {
     }
 
     public Item removerItem(int posicao) {
-        Item temp
-
-                = this.getItens()[posicao];
+        Item temp = this.getItens()[posicao];
         this.getItens()[posicao] = null;
         return temp;
     }
