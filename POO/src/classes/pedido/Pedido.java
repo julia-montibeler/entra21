@@ -16,29 +16,9 @@ public class Pedido {
     }
 
     public void imprimirComanda(){
-        System.out.println("============" +
-                "" +
-                "" +
-                "============");
         for (Lanche lanche : this.getLanches()) {
             if (lanche != null) {
-                if (lanche instanceof MiniPizza) {
-                    MiniPizza mp = ((MiniPizza) lanche);
-                    System.out.println("---- " + mp.getTipo() + " - " + mp.getSabor() + " ----");
-                    if (mp.isBordaRecheada()) {
-                        System.out.println("Borda Recheada (" + mp.getSaborBorda() + ")");
-                    }
-                    if (lanche instanceof Pizza) {
-                        System.out.println("Tamanho: " + ((Pizza) lanche).getTamanho());
-                    }
-                } else {
-                    System.out.println("----- " + lanche.getTipo() + " -----");
-                }
-                if (lanche instanceof XBurguer) {
-                    if (((XBurguer) lanche).isAberto()) {
-                        System.out.println("     Lanche Aberto");
-                    }
-                }
+                lanche.mostrarDetalhesComanda();
                 System.out.printf("Valor: R$%.2f\n", lanche.getValor());
                 System.out.println("---- Ingredientes ----");
                 for (String ingrediente : lanche.getIngredientes()) {
@@ -46,19 +26,10 @@ public class Pedido {
                         System.out.println(ingrediente);
                     }
                 }
-                if (lanche instanceof Sanduiche) {
-                    if (((Sanduiche) lanche).getAdicionais()[0] != null) {
-                        System.out.println("----- Adicionais -----");
-                        for (String adicional : ((Sanduiche) lanche).getAdicionais()) {
-                            if (adicional != null) {
-                                System.out.println(adicional);
-                            }
-                        }
-                    }
-                }
+
             }
         }
-        System.out.printf("==== Total: %.2f ====",calcularValorTotal());
+        System.out.printf("==== Total: %.2f ====", calcularValorTotal());
     }
 
     public double calcularValorTotal() {

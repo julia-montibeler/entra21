@@ -87,6 +87,9 @@ public class Main {
                         System.out.println("Item avaliado com sucesso!");
                         break;
                     case 2:
+                        if (item.getAvaliacoes()[0] == null) {
+                            System.out.println("Não há avaliações para esse item");
+                        }
                         for (Avaliacao a : item.getAvaliacoes()) {
                             if (a != null) {
                                 System.out.println("Nome: "+a.getNome());
