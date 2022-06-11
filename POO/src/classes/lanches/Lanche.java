@@ -1,5 +1,7 @@
 package classes.lanches;
 
+import java.util.Scanner;
+
 public abstract class Lanche {
     private String[] ingredientes = new String[10];
     private double valor;
@@ -13,6 +15,10 @@ public abstract class Lanche {
             }
         }
     }
+
+    public abstract void mostrarDetalhesComanda();
+
+    public abstract void mostrarDetalhesLanche(Scanner sc);
 
     //Getters e setters
 

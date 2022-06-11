@@ -1,5 +1,7 @@
 package classes.lanches;
 
+import java.util.Scanner;
+
 public class MiniPizza extends Lanche {
     private boolean bordaRecheada;
     private String sabor;
@@ -42,6 +44,52 @@ public class MiniPizza extends Lanche {
         }
     }
 
+    @Override
+    public void mostrarDetalhesComanda() {
+        System.out.println("==== " + this.getTipo() + " - " + this.getSabor() + " ====" +
+                "" +
+                "" +
+                "");
+        if (this.isBordaRecheada()) {
+            System.out.println("Borda Recheada (" + this.getSaborBorda() + ")");
+        }
+    }
+
+    @Override
+    public void mostrarDetalhesLanche(Scanner sc) {
+        System.out.println("Escolha o sabor da pizza:");
+        System.out.println("1 - 4 Queijos");
+        System.out.println("2 - Calabresa");
+        System.out.println("3 - Frango c/ catupiry");
+        System.out.println("4 - Marguerita");
+        System.out.println("5 - Portuguesa");
+        int sabor = sc.nextInt();
+        sc.nextLine();
+
+        switch (sabor){
+            case 1: this.adicionarSaborEIngredientes("4 queijos");
+                break;
+            case 2: this.adicionarSaborEIngredientes("Calabresa");
+                break;
+            case 3: this.adicionarSaborEIngredientes("Frango c/ catupiry");
+                break;
+            case 4: this.adicionarSaborEIngredientes("Marguerita");
+                break;
+            case 5: this.adicionarSaborEIngredientes("Portuguesa");
+                break;
+            default:
+                System.err.println("Escolha um sabor válido");
+        }
+
+        System.out.print("Borda Recheada? (S/N) ");
+        String aberto = sc.nextLine();
+        this.setBordaRecheada(aberto.equalsIgnoreCase("S"));
+        if (this.isBordaRecheada()){
+            System.out.print("Digite o sabor da borda: ");
+            this.setSaborBorda(sc.nextLine());
+        }
+    }
+
     //Getters e setters
 
     public void setBordaRecheada(boolean bordaRecheada) {
@@ -64,4 +112,6 @@ public class MiniPizza extends Lanche {
     public String getSabor() {
         return this.sabor;
     }
+
+
 }
