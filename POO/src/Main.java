@@ -11,7 +11,7 @@ public class Main {
             System.out.print("Nome do cliente: ");
             cliente.setNome(sc.nextLine());
 
-            for (int i = 0; i < 9; i++) {
+            while (true){
                 cliente.getPedido().adicionarLanche(montarLanche());
                 System.out.print("Deseja mais alguma coisa? (S/N): ");
                 String escolha = sc.next();
