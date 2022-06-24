@@ -1,13 +1,13 @@
 package classes.lanches;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public abstract class Sanduiche extends Lanche{
-    private ArrayList<String> adicionais = new ArrayList<>();
+    private HashMap<String,Double> adicionais = new HashMap<>();
 
-    public void adicionarAdicionais(String adicional) {
-       adicionais.add(adicional);
+    public void adicionarAdicionais(String adicional, double valor) {
+       adicionais.put(adicional, valor);
     }
 
     @Override
@@ -15,8 +15,8 @@ public abstract class Sanduiche extends Lanche{
         System.out.println("===== " + this.getTipo() + " =====");
         if (!this.getAdicionais().isEmpty()) {
             System.out.println("----- Adicionais -----");
-            for (String adicional : this.getAdicionais()) {
-                System.out.println(adicional);
+            for (String adicional : this.getAdicionais().keySet()) {
+                System.out.printf("%s: R$%.2f\n",adicional,adicionais.get(adicional));
             }
             System.out.println("----------------------");
         }
@@ -33,14 +33,26 @@ public abstract class Sanduiche extends Lanche{
                 if (adicional.equals("")) {
                     break;
                 }
-                this.adicionarAdicionais(adicional);
+                System.out.print("Valor do adicional: ");
+                this.adicionarAdicionais(adicional,sc.nextDouble());
+                sc.nextLine();
 
             }
         }
     }
 
+    @Override
+    public double getValor(){
+        double valorSanduiche = super.getValor();
+        for (Double v : this.adicionais.values()) {
+            valorSanduiche += v;
+        }
+        return valorSanduiche
+                ;
+    }
+
     //Getters e setters
-    public ArrayList<String> getAdicionais() {
+    public HashMap<String,Double> getAdicionais() {
         return this.adicionais;
     }
 }
