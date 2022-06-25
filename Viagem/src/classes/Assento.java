@@ -5,7 +5,7 @@ public abstract class Assento {
     private double valor;
 
     public void ocupar() {
-        //TODO
+        this.setOcupado(true);
     }
 
     //getters e setters

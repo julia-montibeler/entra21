@@ -4,6 +4,18 @@ import java.util.ArrayList;
 public class Onibus implements MeioTransporte{
     ArrayList<AssentoOnibus> assentos = new ArrayList<>();
 
+    public Onibus(int linhasCadeiras) {
+        for (int i = 1; i <= linhasCadeiras * 4; i++) {
+            AssentoOnibus assento = new AssentoOnibus();
+            if (i < 10) {
+                assento.setLugar("0"+i);
+            } else {
+                assento.setLugar(String.valueOf(i));
+            }
+            assentos.add(assento);
+        }
+    }
+
     @Override
     public boolean verificaOcupacao(String assento) {
         for (AssentoOnibus a : assentos) {
@@ -27,7 +39,26 @@ public class Onibus implements MeioTransporte{
 
     @Override
     public void mostrarAssentos() {
-
+        int cont = 0;
+        for (AssentoOnibus a : assentos) {
+            cont++;
+            if ((cont % 4) == 0) {
+                if (a.isOcupado()) {
+                    System.out.printf("[XX]\n");
+                } else {
+                    System.out.printf("["+a.getLugar()+"]\n");
+                }
+            } else {
+                if (a.isOcupado()) {
+                    System.out.printf("[XX] ");
+                } else {
+                    System.out.print("[" + a.getLugar() + "] ");
+                }
+            }
+            if ((cont % 2) == 0 && (cont % 4) != 0) {
+                System.out.print("|| ");
+            }
+        }
     }
 
     @Override
