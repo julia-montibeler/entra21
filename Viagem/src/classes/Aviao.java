@@ -4,6 +4,29 @@ import java.util.ArrayList;
 public class Aviao implements MeioTransporte{
     ArrayList<AssentoVoo> assentos = new ArrayList<>();
 
+    public Aviao(int linhasCadeirasLuxo, int linhasCadeirasEconomicas) {
+
+        String letrasLuxo[] = {"A","B","C","D"};
+        for (int i = 0; i < 4; i++) {
+            for (int j = 1; j < linhasCadeirasLuxo; j++) {
+                AssentoVoo assento = new AssentoVoo();
+                assento.setClasse("luxo");
+                assento.setCodigo(letrasLuxo[i]+j);
+                assentos.add(assento);
+            }
+        }
+
+        String letrasEconomica[] = {"A","B","C","D","E","F"};
+        for (int i = 0; i < 6; i++) {
+            for (int j = 1; j < linhasCadeirasEconomicas; j++) {
+                AssentoVoo assento = new AssentoVoo();
+                assento.setClasse("econômica");
+                assento.setCodigo(letrasEconomica[i]+j);
+                assentos.add(assento);
+            }
+        }
+    }
+
     @Override
     public boolean verificaOcupacao(String assento) {
         for (AssentoVoo a : assentos) {
@@ -16,24 +39,32 @@ public class Aviao implements MeioTransporte{
 
     @Override
     public int quantidadeLivre() {
-        int cont = 0;
+        int assentosLivres = 0;
         for (AssentoVoo a : assentos) {
             if (!a.isOcupado()) {
-                cont += 1;
+                assentosLivres += 1;
             }
         }
-        return cont;
+        return assentosLivres;
     }
 
     @Override
     public void mostrarAssentos() {
-
     }
 
     @Override
     public Assento getAssento(String assento) {
         for (AssentoVoo a : assentos) {
             if (a.getCodigo().equalsIgnoreCase(assento)) {
+                return a;
+            }
+        }
+        return null;
+    }
+    public Assento getAssento(String assento, String classe) {
+        for (AssentoVoo a : assentos) {
+            if (a.getCodigo().equalsIgnoreCase(assento)
+                && a.getClasse().equalsIgnoreCase(classe)) {
                 return a;
             }
         }
