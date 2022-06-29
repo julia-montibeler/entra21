@@ -42,21 +42,14 @@ public class Onibus implements MeioTransporte{
         int cont = 0;
         for (AssentoOnibus a : assentos) {
             cont++;
-            if ((cont % 4) == 0) {
-                if (a.isOcupado()) {
-                    System.out.printf("[XX]\n");
-                } else {
-                    System.out.printf("["+a.getLugar()+"]\n");
-                }
+            if (a.isOcupado()) {
+                System.out.printf("[XX]");
             } else {
-                if (a.isOcupado()) {
-                    System.out.printf("[XX] ");
-                } else {
-                    System.out.print("[" + a.getLugar() + "] ");
-                }
-            }
-            if ((cont % 2) == 0 && (cont % 4) != 0) {
-                System.out.print("|| ");
+                System.out.printf("["+a.getLugar()+"]");
+            } if ((cont % 4) == 0) {
+                System.out.println("");
+            } else if ((cont % 2) == 0) {
+                System.out.print(" || ");
             }
         }
     }
