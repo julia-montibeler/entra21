@@ -7,20 +7,20 @@ public class Aviao implements MeioTransporte{
     public Aviao(int linhasCadeirasLuxo, int linhasCadeirasEconomicas) {
 
         String letrasLuxo[] = {"A","B","C","D"};
-        for (int i = 0; i < 4; i++) {
-            for (int j = 1; j < linhasCadeirasLuxo; j++) {
+        for (int j = 1; j <= linhasCadeirasLuxo; j++) {
+            for (int i = 0; i < 4; i++) {
                 AssentoVoo assento = new AssentoVoo();
-                assento.setClasse("luxo");
+                assento.setClasse(ClasseAssentoVoo.LUXO);
                 assento.setCodigo(letrasLuxo[i]+j);
                 assentos.add(assento);
             }
         }
 
         String letrasEconomica[] = {"A","B","C","D","E","F"};
-        for (int i = 0; i < 6; i++) {
-            for (int j = 1; j < linhasCadeirasEconomicas; j++) {
+        for (int j = 1; j <= linhasCadeirasEconomicas; j++) {
+            for (int i = 0; i < 6; i++) {
                 AssentoVoo assento = new AssentoVoo();
-                assento.setClasse("econômica");
+                assento.setClasse(ClasseAssentoVoo.ECONOMICA);
                 assento.setCodigo(letrasEconomica[i]+j);
                 assentos.add(assento);
             }
@@ -50,6 +50,38 @@ public class Aviao implements MeioTransporte{
 
     @Override
     public void mostrarAssentos() {
+        int contLuxo = 0;
+        int contEconomica = 0;
+        for (AssentoVoo a : assentos) {
+            if (a.getClasse().equals(ClasseAssentoVoo.LUXO)) {
+                contLuxo++;
+                if (a.isOcupado()) {
+                    System.out.printf("[XX]");
+                } else {
+                    System.out.printf("[" + a.getCodigo() + "]");
+                }
+                if ((contLuxo % 4) == 0) {
+                    System.out.println("");
+                } else if ((contLuxo % 2) == 0) {
+                    System.out.print(" || ");
+                }
+            } else {
+                contEconomica++;
+                if (a.getCodigo().equalsIgnoreCase("A1")) {
+                    System.out.println("");
+                }
+                if (a.isOcupado()) {
+                    System.out.printf("[XX]");
+                } else {
+                    System.out.printf("[" + a.getCodigo() + "]");
+                }
+                if ((contEconomica % 6) == 0) {
+                    System.out.println("");
+                } else if ((contEconomica % 3) == 0) {
+                    System.out.print(" || ");
+                }
+            }
+        }
     }
 
     @Override
@@ -61,11 +93,16 @@ public class Aviao implements MeioTransporte{
         }
         return null;
     }
-    public Assento getAssento(String assento, String classe) {
+    public Assento getAssento(String assento, ClasseAssentoVoo classe) {
         for (AssentoVoo a : assentos) {
             if (a.getCodigo().equalsIgnoreCase(assento)
-                && a.getClasse().equalsIgnoreCase(classe)) {
+                && a.getClasse().equals(classe)) {
                 return a;
+
+
+
+
+                
             }
         }
         return null;
