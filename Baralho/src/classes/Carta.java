@@ -2,15 +2,21 @@ package classes;
 
 public class Carta {
     Naipe naipe;
-    ValorCarta num;
+    ValorCarta valor;
+    int valorReal = 0;
 
     @Override
     public String toString() {
-        return num.getValorCarta() +" de "+ naipe.getNaipe();
+        return valor.getValorCarta() +" de "+ naipe.getNaipe();
     }
 
     //getters e setters
-
+    public int getValorReal() {
+        return valorReal;
+    }
+    public void setValorReal(int valorReal) {
+        this.valorReal = valorReal;
+    }
 
     public Naipe getNaipe() {
         return naipe;
@@ -20,12 +26,12 @@ public class Carta {
         this.naipe = naipe;
     }
 
-    public ValorCarta getNum() {
-        return num;
+    public ValorCarta getValor() {
+        return valor;
     }
 
-    public void setNum(ValorCarta num) {
-        this.num = num;
+    public void setValor(ValorCarta valor) {
+        this.valor = valor;
     }
 }
 

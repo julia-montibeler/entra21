@@ -2,15 +2,15 @@ package classes.guardados;
 
 import classes.itens.Item;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class Estante {
     private int capMaxima;
-    private Item[] itens;
+    private ArrayList<Item> itens = new ArrayList<>();
 
     public Estante(int capMaxima) {
         setCapMaxima(capMaxima);
-        setItens(new Item[capMaxima]);
     }
 
     public boolean estanteCheia() {
@@ -18,40 +18,24 @@ public class Estante {
     }
 
     public int quantidadeItens() {
-        int cont = 0;
-        for (Item i : getItens()) {
-            if (i != null) {
-                cont++;
-            }
-        }
-        return cont;
+        return this.itens.size();
     }
 
     public Item buscarItem(String titulo) {
-        for (Item i : this.getItens()) {
-            if (i != null) {
-                if (i.getTitulo().toLowerCase().contains(titulo.toLowerCase())) {
-                    return i;
-                }
-            }
-        }
-        return null;
+        return this.itens.stream().filter(
+                item -> titulo.equalsIgnoreCase(item.getTitulo())).findFirst().orElse(null);
     }
 
     public boolean adicionarItem(Item item) {
-        for (int i = 0; i < this.getItens().length; i++) {
-            if (getItens()[i] == null) {
-                getItens()[i] = item;
-                return true;
-            }
+        if (!estanteCheia()) {
+            this.getItens().add(item);
+            return true;
         }
         return false;
     }
 
     public Item removerItem(int posicao) {
-        Item temp = this.getItens()[posicao];
-        this.getItens()[posicao] = null;
-        return temp;
+        return this.itens.remove(posicao);
     }
 
     // GETTERS & SETTERS
@@ -64,11 +48,11 @@ public class Estante {
         this.capMaxima = capMaxima;
     }
 
-    public Item[] getItens() {
+    public ArrayList<Item> getItens() {
         return itens;
     }
 
-    public void setItens(Item[] itens) {
+    public void setItens(ArrayList itens) {
         this.itens = itens;
     }
 }
