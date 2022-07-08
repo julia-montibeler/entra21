@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
@@ -78,5 +80,19 @@ public class Main {
         }
 
         System.out.println(palavras);
+    }
+
+    public static void exe4() {
+        while(true) {
+            try {
+                System.out.print("Informe um número: ");
+                System.out.println(sc.nextInt());
+            } catch (InputMismatchException e) {
+                System.out.println("Não é um número!");
+                sc.nextLine();
+            } catch (NoSuchElementException e2) {
+
+            } finally
+        }
     }
 }

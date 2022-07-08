@@ -20,8 +20,10 @@ public class DVD extends Item{
     }
     @Override
     public void mostrarDetalhes() {
-        System.out.println(" - " + this.getTitulo() + " (" + this.getGenero() + "): " + this.getAnoLancamento() + " - "
-                + this.getDiretor());
+        System.out.println("");
+        System.out.println("Diretor: "+getDiretor());
+        System.out.println("Duração: "+getDuracao());
+        System.out.println("Ano de lançamento: "+getAnoLancamento());
     }
 
     // GETTERS & SETTERS
