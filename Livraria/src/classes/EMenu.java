@@ -5,6 +5,7 @@ public enum EMenu implements IMenu{
     BUSCAR_ITEM(2, "Buscar item"),
     REMOVER_ITEM(3,"Remover item"),
     MOSTRAR_ITENS(4,"Mostrar itens da estante"),
+
     ADICIONAR_ESTANTE(5,"Adicionar estante"),
     SAIR(0,"Sair");
 
@@ -21,7 +22,7 @@ public enum EMenu implements IMenu{
                 return e;
             }
         }
-        return null;
+        throw new RuntimeException();
     }
 
     public int getValorOpcao() {

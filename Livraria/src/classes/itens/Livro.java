@@ -25,6 +25,7 @@ public class Livro extends Item{
 
     @Override
     public void mostrarDetalhes() {
+        System.out.println("");
         System.out.println("Autor: "+this.getAutor());
         System.out.println("Quantidade de páginas: "+this.getQtdePaginas());
         System.out.println("Ano publicação: "+this.getAnoPublicacao());

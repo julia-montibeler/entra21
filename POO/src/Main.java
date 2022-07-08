@@ -1,7 +1,9 @@
+import classes.ETipoLanche;
 import classes.cliente.Cliente;
 import classes.lanches.*;
 import classes.pedido.Pedido;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -25,51 +27,39 @@ public class Main {
         }
 
     private static Lanche montarLanche() {
-        System.out.println("1 - X-Salada");
-        System.out.println("2 - X-Burger");
-        System.out.println("3 - Hot Dog");
-        System.out.println("4 - Misto Quente");
-        System.out.println("5 - Mini Pizza");
-        System.out.println("6 - Pizza");
-        int escolha = sc.nextInt();
-        sc.nextLine();
-
         Lanche lanche = null;
-
+        ETipoLanche escolha = escolherOpcao();
         switch (escolha) {
-            case 1:
-                lanche = new XSalada(); //criando um objeto
-                break;
-
-            case 2:
-                lanche = new XBurguer();
-                break;
-
-            case 3:
-                lanche = new HotDog();
-                break;
-
-            case 4:
-                lanche = new MistoQuente();
-                break;
-
-            case 5:
-                lanche = new MiniPizza();
-                break;
-
-            case 6:
-                lanche = new Pizza();
-                break;
-
-            default:
-                System.err.println("Escolha um valor válido");
+            case XS -> lanche = new XSalada(); //criando um objeto
+            case XB -> lanche = new XBurguer();
+            case HD -> lanche = new HotDog();
+            case MQ -> lanche = new MistoQuente();
+            case MP -> lanche = new MiniPizza();
+            case P -> lanche = new Pizza();
+            default -> System.err.println("Escolha um valor válido");
         }
-
         lanche.mostrarDetalhesLanche(sc);
-
         System.out.print("Informe o valor de "+lanche.getTipo()+": R$");
         lanche.setValor(sc.nextDouble());
         sc.nextLine();
         return lanche;
+    }
+
+    public static ETipoLanche escolherOpcao() {
+        ETipoLanche escolha = null;
+        System.out.println("");
+        while (escolha == null) {
+            try {
+                for (ETipoLanche e : ETipoLanche.values()) {
+                    System.out.println(e.getValorOpcao() + " - " + e.getDescricao());
+                }
+                return ETipoLanche.getByValorOpcao(sc.nextInt());
+            } catch (RuntimeException e) {
+                System.out.println("Selecione uma opcão válida");
+            } finally {
+                sc.nextLine();
+            }
+        }
+        return escolha;
     }
 }
