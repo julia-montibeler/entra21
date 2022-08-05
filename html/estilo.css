@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/poppins-v20-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/poppins-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/poppins-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/poppins-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/poppins-v20-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+  }
+
+*{
+    font-family: 'Poppins';
+}
+
+#d{
+    background-color:pink;
+    text-align: left;
+    height: 78vh;
+    width: 10%;
+    padding: 20px;
+    vertical-align: center;
+}
+
+#t{
+    background-color: lightblue;
+    height: 10vh;
+    text-align: center;
+    padding: 20px;
+
+}
+
+table{
+    border: 1px solid black;
+    width: 100%;
+    border-spacing: 0;
+}
+
+th {
+    text-align: left;
+    background-color: rgb(255, 220, 226);
+    padding: 8px 4px;
+}
+
+ul{
+    color: crimson;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{color:crimson;	
+}
+
+h3{
+    text-align: center;
+}
