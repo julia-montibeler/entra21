@@ -15,47 +15,142 @@
     font-family: 'Poppins';
 }
 
-#d{
-    background-color:pink;
+body{
+    background-color: rgb(240, 231, 255);
+}
+
+/* #d{
+    background-color:rgb(216, 192, 255);
     text-align: left;
     height: 78vh;
     width: 10%;
     padding: 20px;
-    vertical-align: center;
 }
 
 #t{
-    background-color: lightblue;
+    background-color: rgb(200, 166, 255);
     height: 10vh;
     text-align: center;
     padding: 20px;
 
-}
+} */
 
-table{
-    border: 1px solid black;
-    width: 100%;
-    border-spacing: 0;
-}
-
-th {
-    text-align: left;
-    background-color: rgb(255, 220, 226);
-    padding: 8px 4px;
+#d {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    text-align: center;
 }
 
 ul{
-    color: crimson;
+    list-style: none;
 }
 
-a{
-    text-decoration: none;
+div.navlist {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+div.navlist a:first-child {
+    margin-left: 0;
+}
+
+div.navlist a {
+    margin-left: 30px;
+    margin-bottom: 30px;
+    display: block;
     color: black;
+    text-decoration: none;
+    background-color: rgb(255, 118, 175);
+    padding: 4px 8px;
+    color: white;
+    border-radius: 6px;
+    font-size: 25px;
+    box-shadow: 5px 5px rgb(221, 206, 255);
 }
 
-a:hover{color:crimson;	
+div.navlist a:hover {
+    background-color: rgb(253, 98, 163);
 }
 
 h3{
     text-align: center;
+}
+
+h1{
+    font-size: 35px;
+    margin-top: 225px;
+    text-align: center;
+    text-shadow: 3px 3px rgb(221, 206, 255);
+}
+
+table{
+    width: 50%;
+    margin: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+/*th {
+    text-align: left;
+    background-color: rgb(255, 220, 226);
+    padding: 8px 4px;
+} */
+
+
+
+tfoot tr.sum td{
+    text-align: right;
+}
+
+small {
+    color: rgb(136, 136, 136);
+    font-size: 12px;
+}
+
+/* tr{
+    border-bottom: 1px solid rgb(255, 220, 226);
+}*/
+
+td{
+    padding: 20px 10px;
+}
+
+tfoot tr{
+    border: none;
+}
+
+table.contained{
+    margin: 0 15%;
+    width: 70%
+}
+
+.c1  {
+    width: 50%;
+}
+
+.c2 {
+    width: 40%;
+}
+
+.c3 {
+    text-align: center;
+}
+
+.c3 a {
+    background-color: rgb(228, 83, 143);
+    padding: 4px 8px;
+    color: white;
+    display: inline-block;
+    margin: 2px 0;
+    border-radius: 6px;
+}
+
+.c3 a:hover{
+    background-color:rgb(207, 67, 125);	
 }
