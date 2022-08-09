@@ -7,9 +7,12 @@
         <meta name="author" content="Júlia M">
         <meta name = "viewport"
             content = "width = devide-width, initial-scale = 1.0">
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <link rel="stylesheet" type="text/css " href="estiloFormulario.css">
     </head>
     <body>
         <div>
+            <h1>Formulário</h1>
             <form id = "forms">
                 <label for = "n">Número: </label>
                 <input type = "number" id = "n"/>
@@ -21,11 +24,15 @@
                 <input type = "password" id = "s"/>
                 <br><br>
                 <label for = "ch_1">Sim </label>
-                <input type = "radio" name = "radio" id = "r1"/>
+                <input class = "check" type = "radio" name = "radio" id = "r1"/>
                 <label for = "ch_1">Não </label>
-                <input type = "radio" name = "radio" id = "r2"/>
+                <input class = "check" type = "radio" name = "radio" id = "r2"/>
                 <br><br>
-                <label for = "ch_1">oi</label>
+                <label for = "ch_1">roxo</label>
+                <input type = "checkbox" id = "ch_1"/>
+                <label for = "ch_1">rosa</label>
+                <input type = "checkbox" id = "ch_1"/>
+                <label for = "ch_1">verde</label>
                 <input type = "checkbox" id = "ch_1"/>
                 <br><br>
                 <input type = "submit" value = "enviar"/>
