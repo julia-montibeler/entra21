@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/poppins-v20-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/poppins-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/poppins-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/poppins-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/poppins-v20-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+  }
+
+*{
+    font-family: 'Poppins';
+}
+
+body {
+    background-color: rgb(231, 250, 207);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 120px;
+}
+
+input {
+    border: 0;
+}
+
+input[type = number], [type = password] {
+    box-shadow: 1px 2px 2px rgb(230, 230, 230);
+}
+
+
+input[type = submit]{
+    background-color: rgb(165, 204, 134);
+    margin: auto;
+    padding: 3px;
+    border-radius: 4px;
+    width: 100px;
+    margin-left: 260px;
+}
+
+input[type = color]{
+    padding: 0;
+    border-radius: 100%;
+}
+
+input[type = submit]:hover{
+    background-color: rgb(158, 201, 123);
+    cursor: pointer;
+}
+
+input[type = checkbox],[type = radio]:hover{
+    cursor: pointer;
+}
+
+form {
+    border-radius: 8px;
+    background-color: rgb(245, 244, 244);
+    box-shadow: 0px 8px 20px rgb(154, 173, 133);
+    margin: auto;
+    padding: 40px;
+    width: 40%;
+    margin-top: 30px;
+}
