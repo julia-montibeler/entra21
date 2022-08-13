@@ -13,6 +13,16 @@
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
         <link rel="stylesheet" type="text/css " href="estilo.css">
     </head>
+    <script type="text/javascript">
+       function load() {
+            let guess = Math.floor(Math.random()*11);
+            let userInput = -1;
+            while(guess != userInput) {
+                userInput = prompt("Take a whild guess: ");
+            }
+        }
+        window.onload = load;
+    </script>
     <body class="index">
             <h1>Minha primeira página web</h1>
             <div class="navlist">
@@ -24,6 +34,7 @@
                 <a href = "tabelas.html">Tabelas</a>
                 <a href = "formularios.html">Formulários</a>
                 <a href = "iframe.html">Iframe</a>
+                <a href = "javascript.html">javascript</a>
             </div>
     </body>
 </html>
