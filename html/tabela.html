@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang = "pt-br">
+    <head>
+        <title>Primeira página html</title>
+        <meta charset = "utf-8">
+        <meta name = "keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Júlia M">
+        <meta name = "viewport"
+            content = "width = device-width, initial-scale = 1.0">
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <link rel="stylesheet" type="text/css " href="estiloTabela.css">
+        <script type="text/javascript">
+
+            var lanches = [];
+            var id_seq = 1;
+
+            function onAdd() {
+                let nome = prompt("Informe o nome do lanche: ");
+                let valor = Number(prompt(`Informe o valor de ${nome}`));
+                let lanche = {
+                    "id": id_seq,
+                    "nome": nome,
+                    "valor": valor
+                };
+                lanches.push(lanche);
+                id_seq++;
+                tableLoad();
+            }
+
+            function tableLoad() {
+                let tableBody = document.getElementById("tabela").getElementsByTagName("tbody")[0];
+                tableBody.innerHTML = lanches.map((lanche) => {
+                    return `
+                        <tr>
+                            <td id="lanche-${lanche.id}-nome">${lanche.nome}</td>
+                            <td id="lanche-${lanche.id}-valor">${lanche.valor}</td>
+                            <td class="edit-cell" id="lanche-${lanche.id}-crud">
+                                <button class="btn btn-warning"" onclick="onAlter(${lanche.id})">Alterar</button>
+                                <button class="btn btn-danger"  onclick="onDelete(${lanche.id})">Excluir</button>                          
+                            </td>
+                            <td class="edit-cell" style="display: none;" id="lanche-${lanche.id}-save">
+                                <button class="btn btn-success" onclick="onSave(${lanche.id})">Salvar</button>    
+                                <button class="btn btn-danger" onclick="onCancel(${lanche.id})">Cancelar</button>    
+                            </td> 
+                        </tr>
+                    `;
+                }).join("");
+                tableBody.insertRow();
+            }
+
+            function onCancel(id) {
+                let lanche = lanches.find(lanche => lanche.id === id);
+                document.getElementById(`lanche-${lanche.id}-nome`).innerHTML = `${lanche.nome}`;
+                document.getElementById(`lanche-${lanche.id}-valor`).innerHTML = `${lanche.valor}`;
+                document.getElementById(`lanche-${lanche.id}-crud`).style = "";
+                document.getElementById(`lanche-${lanche.id}-save`).style = "display: none;";
+            }
+
+            function onSave(id) {
+                let lanche = lanches.find(lanche => lanche.id === id);
+                lanche.nome = document.getElementById(`input-lanche-${lanche.id}-nome`).value;
+                document.getElementById(`lanche-${lanche.id}-nome`).innerHTML = `${lanche.nome}`;
+                lanche.valor = document.getElementById(`input-lanche-${lanche.id}-valor`).value;
+                document.getElementById(`lanche-${lanche.id}-valor`).innerHTML = `${lanche.valor}`;
+                document.getElementById(`lanche-${lanche.id}-crud`).style = "";
+                document.getElementById(`lanche-${lanche.id}-save`).style = "display: none;";
+            }
+
+            function onAlter(id) {
+                let lanche = lanches.find(lanche => lanche.id === id);
+                document.getElementById(`lanche-${lanche.id}-nome`).innerHTML = `
+                    <input type="text" id="input-lanche-${id}-nome" value="${lanche.nome}"/>
+                `;
+                document.getElementById(`lanche-${lanche.id}-valor`).innerHTML = `
+                    <input type="text" id="input-lanche-${id}-valor" value="${lanche.valor}"/>
+                `;
+                document.getElementById(`lanche-${lanche.id}-crud`).style = "display: none;";
+                document.getElementById(`lanche-${lanche.id}-save`).style = "";
+            }
+
+            function onDelete(id) {
+                let lanche = lanches.find(lanche => lanche.id === id);
+                let userConf = confirm(`Deseja realmente excluir o lanche ${lanche.nome}?`);
+                if (userConf) {
+                    lanches = lanches.filter(lanche => lanche.id !== id);
+                    tableLoad();
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <table id="tabela" class="contained">
+                <caption><h3>Vendinha</h3></caption>
+                <thead>
+                    <tr>
+                        <th class="w-50">Lanche</th>
+                        <th class="w-40">Valor</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">
+                            <button class="btn btn-success" onclick="onAdd()">Adicionar</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </body>
+</html>

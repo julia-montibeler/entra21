@@ -20,6 +20,14 @@ h3{
     text-align: center;
 }
 
+.w-50 {
+    width: 50%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
 table{
     width: 50%;
     margin: auto;
@@ -33,13 +41,8 @@ th {
     padding: 8px 4px;
 }
 
-tfoot tr.sum td{
+tfoot td{
     text-align: right;
-}
-
-small {
-    color: rgb(136, 136, 136);
-    font-size: 12px;
 }
 
 tr{
@@ -47,7 +50,7 @@ tr{
 }
 
 td{
-    padding: 20px 10px;
+    padding: 10px 10px;
 }
 
 a {
@@ -60,30 +63,51 @@ tfoot tr{
 
 table.contained{
     margin: 0 15%;
-    width: 70%
+    width: 60%
 }
 
-.c1  {
-    width: 50%;
+.btn {
+    border: 0;
+    background-color: transparent;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 10px;
+
 }
 
-.c2 {
-    width: 40%;
+.btn.btn-success{
+    background-color: rgb(204, 226, 171);
 }
 
-.c3 {
-    text-align: center;
+.btn.btn-success:hover{
+    background-color: rgb(192, 219, 150);
 }
 
-.c3 a {
-    background-color: rgb(228, 83, 143);
-    padding: 4px 8px;
-    color: white;
-    display: inline-block;
-    margin: 2px 0;
-    border-radius: 6px;
+.btn.btn-success:active{
+    background-color: rgb(181, 207, 140);
 }
 
-.c3 a:hover{
-    background-color:rgb(207, 67, 125);	
+.btn.btn-warning{
+    background-color: rgb(255, 213, 134);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+}
+
+.btn.btn-warning:hover{
+    background-color: rgb(238, 192, 106);
+}
+
+.btn.btn-warning:active{
+    background-color: rgb(236, 191, 106);
+}
+
+.btn.btn-danger {
+    background-color: rgb(235, 140, 140);
+}
+
+.btn.btn-danger:hover {
+    background-color: rgb(224, 116, 116);
+}
+
+.btn.btn-danger:active {
+    background-color: rgb(207, 101, 101);
 }
