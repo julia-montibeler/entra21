@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/poppins-v20-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/poppins-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/poppins-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/poppins-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/poppins-v20-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+  }
+
+*{
+    font-family: 'Poppins';
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(247, 247, 247);
+}
+
+button{
+    background-color: rgb(132, 216, 250);
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 2px 2px 0px rgb(211, 211, 211);
+    padding: 10px;
+}
+
+button:hover{
+    background-color: rgb(107, 205, 243);
+    cursor: pointer;
+}
+
+input {
+    background-color: rgb(247, 247, 247);
+    border: 0;
+    width: 200px;
+    border-bottom: 1px solid black;
+}
+
+input:placeholder-shown {
+    font-style: italic;
+}
+
+input:focus-visible {
+    outline: none;
+}
+.flex{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#msg {
+    font-size: 15px;
+}
+
+.erro {
+    color: rgb(250, 119, 119);
+}
+
+.dica {
+    color: rgb(247, 176, 46);
+}
+
+.acerto {
+    color: rgb(86, 184, 67);
+}

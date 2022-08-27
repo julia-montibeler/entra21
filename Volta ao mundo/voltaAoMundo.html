@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css " href="estilo.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="flex">
+        <h1>Volta ao mundo</h1>
+        <br>
+        <img src="car.png" width="20%">
+        <br>
+        <p id="msg"></p>
+        <input type="text" id="pais" placeholder="digite um país">
+        <br>
+        <button onclick="jogo()">Posso ir?</button>
+    </div>
+    <script>
+        document.getElementById("pais").addEventListener("keydown", (e) => {
+            if (e.key == "Enter" || e.keyCode == 13) {
+                jogo();
+            }
+        });
+        var letras = ["v","o","l","t","a"];
+        var paises = {
+            "v":["Vaticano","Veneza","Venezuela","Vietnã","Vanuatu"],
+            "o":["Ottawa","Omã","Olinda","Olímpia","Osasco"],
+            "l":["Londres","Lisboa","Los Angeles","Las Vegas","Luxemburgo"],
+            "t":["Tailândia","Taiwan","Turquia","Tanzânia","Tunísia"],
+            "a":["Alaska","Argélia","Argentina","Austrália","Alemanha"]
+        };    
+        let rep = 0;
+        let tentativas = 0;
+        function jogo() {
+            msg.classList = [];
+            let pais = document.getElementById("pais").value;
+            document.getElementById("pais").value = "";
+            if (pais.charAt(0).toLowerCase() == letras[rep]) {
+                tentativas = 0;
+                msg.classList.add("acerto");
+                document.getElementById("msg").innerHTML = `Você pode viajar para ${pais}`;
+                if (!(paises[letras[rep]].includes(pais))) {
+                    paises[letras[rep]].push(pais);
+                }
+                rep++;
+            } else {
+                tentativas++
+                msg.classList.add("erro");
+                document.getElementById("msg").innerHTML = `Você não pode viajar para ${pais}`;
+                
+            }
+            if (tentativas == 3) {
+                sort =  Math.round(Math.random(0,4)*4);
+                msg.classList.add("dica");
+                document.getElementById("msg").innerHTML = `Você não pode viajar para ${pais}, mas você pode viajar para ${paises[letras[rep]][sort]}`;
+                rep++;
+                tentativas = 0;
+            }
+        }
+    </script>
+</body>
+</html>

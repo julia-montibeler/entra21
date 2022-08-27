@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/poppins-v20-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/poppins-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/poppins-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/poppins-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/poppins-v20-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+  }
+
+*{
+    font-family: 'Poppins';
+}
+
+html, body {
+    background-color: rgb(219, 247, 255);
+}
+
+.flex-container {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.border {
+    border: 5px solid rgb(54, 176, 197);
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgb(85, 163, 199);
+}
+
+.buttons{
+    display: inline;
+}
+
+button {
+    padding: 10px;
+    border: 0px;
+    color: white;
+    background-color: rgb(7, 154, 180);
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: rgb(0, 133, 156);
+    cursor: pointer;
+}
+
+button:disabled {
+    color: rgb(0, 107, 126);
+}
+
+button:disabled:hover {
+    cursor: auto;
+    color: rgb(0, 107, 126);
+    background-color: rgb(7, 154, 180);
+}

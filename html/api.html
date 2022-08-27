@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APIs</title>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css " href="estilo.css">
+    <link rel="stylesheet" type="text/css " href="estiloApi.css">
     <script type="text/javascript">
 
         // function getPokemon() {
@@ -17,18 +17,57 @@
         //     console.log(JSON.parse(req.responseText));
         // }
 
-        function loadCharList() {
+        function loadImg() {
+            requestImg();
+        }
+
+        function requestImg(text) {
+            let url = text == "" || text == null?
+                "https://cataas.com/cat?json=true" :
+                `https://cataas.com/cat/says/${text}?json=true`;
             let req = new XMLHttpRequest();
-            req.open("GET","https://ghibliapi.herokuapp.com/films/",false);
+            req.open("GET", url, true);
+            req.onload = () => {
+                let img = document.getElementsByTagName("img")[0];
+                img.src = "https://cataas.com/" + JSON.parse(req.responseText).url;
+                img.onload = () => Array.from(document.getElementsByTagName("button")).forEach(btn => btn.disabled = false);
+                img.classList.add("border");
+            }
+            Array.from(document.getElementsByTagName("button")).forEach(btn => btn.disabled = true);
             req.send(null);
-            document.getElementById("charlist").innerHTML = 
-                JSON.parse(req.responseText).map(char => `
-                    <li>${char.title}</li>
-                `).join("");
+        }
+
+        function loadImgWithText() {
+            let texto = prompt("Digite o texto a ser inserido na imagem");
+           if (texto != null) {
+                requestImg(texto);
+           }
+        }
+
+        function getGif() {
+            let req = new XMLHttpRequest();
+            req.open("GET", "https://cataas.com/cat/gif?json=true", true);
+            req.onload = () => {
+                let img = document.getElementsByTagName("img")[0];
+                img.src = "https://cataas.com/" + JSON.parse(req.responseText).url;
+                img.onload = () => Array.from(document.getElementsByTagName("button")).forEach(btn => btn.disabled = false);
+                img.classList.add("border");
+            }
+            Array.from(document.getElementsByTagName("button")).forEach(btn => btn.disabled = true);
+            req.send(null);
         }
     </script>
 </head>
-<body onload="loadCharList()">
-    <ul id="charlist"></ul>
+<body>
+    <div class="flex-container">
+        <div>
+            <img src/>
+        </div>
+        <div class="buttons">
+            <button onclick="loadImg()">Get cat</button>
+            <button onclick="loadImgWithText()">Get cat with text</button>
+            <button onclick="getGif()">Get cat GIF</button>
+        </div>
+    </div>
 </body>
 </html>
