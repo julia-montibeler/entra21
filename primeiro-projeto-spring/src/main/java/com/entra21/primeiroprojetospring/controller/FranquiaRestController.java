@@ -45,7 +45,7 @@ public class FranquiaRestController {
         franquiaRepository.deleteById(id);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public ResponseEntity<FranquiaEntity> updateFranquia(@PathVariable(name = "id") Long id, @RequestBody String novoNome) {
         Optional<FranquiaEntity> entity = franquiaRepository.findById(id);
         if(entity.isPresent()) {
